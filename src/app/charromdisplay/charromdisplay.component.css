@@ -1,0 +1,7 @@
+#canvas{
+  border:double;
+  border-color: green;
+  left: auto;
+  display: inline;
+  margin: 10px;
+}

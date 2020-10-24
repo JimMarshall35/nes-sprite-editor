@@ -1,0 +1,11 @@
+#dropzone {
+  width: auto;
+  height: auto;
+  max-height: 800px;
+  min-height: 800px;
+  overflow-y: scroll;
+  border: solid;
+  display: inline-block;
+  border-color: blue;
+  text-align: center;
+}

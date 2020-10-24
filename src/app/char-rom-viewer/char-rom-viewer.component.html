@@ -1,0 +1,8 @@
+<div id="dropzone" (drop)="onFilesDropped($event)">
+
+    <h3 style="margin: 10px;">{{_text}}</h3>
+    <input type="file" (change)="onFilesDropped($event)" />
+    <app-charromdisplay [TileImages]="LoadedTiles"></app-charromdisplay>
+
+  
+</div>
