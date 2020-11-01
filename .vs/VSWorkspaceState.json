@@ -3,8 +3,11 @@
     "",
     "\\e2e",
     "\\src",
-    "\\src\\app"
+    "\\src\\app",
+    "\\src\\app\\char-rom-viewer",
+    "\\src\\app\\charromdisplay",
+    "\\src\\app\\single-tile-display"
   ],
-  "SelectedNode": "\\src\\app\\app.component.ts",
+  "SelectedNode": "\\src\\app\\processrawchararray.service.ts",
   "PreviewInSolutionExplorer": false
 }

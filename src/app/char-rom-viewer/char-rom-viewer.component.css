@@ -1,4 +1,4 @@
-#dropzone {
+.dropzone {
   width: auto;
   height: auto;
   max-height: 800px;
@@ -8,4 +8,16 @@
   display: inline-block;
   border-color: blue;
   text-align: center;
+}
+.outer {
+  display: flex;
+  text-align: center;
+  width: 100%;
+}
+.inner {
+  width: auto;
+  margin: auto auto;
+}
+.info{
+
 }
