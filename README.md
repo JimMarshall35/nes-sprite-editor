@@ -9,6 +9,11 @@ works well on google chrome - your mileage may vary on other browsers
 
 front end presentation still a work in progress!
 
+What it does not (yet) do:
+  - allow you to edit colour palettes
+  - allow editing of sprites on games where this data is stored 
+    in the PRG rom not a separate CHR rom (for example zelda). A sizeable sub set of NES games
+  - allow you to edit tile maps
 # AngularMerkel
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
