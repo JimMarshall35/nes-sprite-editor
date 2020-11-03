@@ -1,0 +1,22 @@
+.gridrow{
+	display: flex;
+	flex-direction: row;
+	width: auto;
+}
+.gridcol{
+	display: flex;
+	flex-direction: column;
+	height: auto;
+}
+.gridcell{
+	width: 25px;
+	height: 25px;
+	border-style: solid;
+
+}
+canvas{
+	border: solid;
+	border-color: yellow;
+	height: auto;
+	display: block;
+}

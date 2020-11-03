@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component,AfterViewInit, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { SpritesData, ROMMetaData, SingleSprite} from '../processrawchararray.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { SpritesData, ROMMetaData, SingleSprite} from '../processrawchararray.se
   templateUrl: './charromdisplay.component.html',
   styleUrls: ['./charromdisplay.component.css']
 })
-export class CharromdisplayComponent implements OnInit {
+export class CharromdisplayComponent implements AfterViewInit {
   private _scaledtilesize = 24;
   private _ctx;
   private _canvas: HTMLCanvasElement;
@@ -19,16 +19,19 @@ export class CharromdisplayComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this._canvas = <HTMLCanvasElement>document.getElementById("canvas");
     this._ctx = this._canvas.getContext("2d");
-    this._canvas.width = 16 * this._scaledtilesize;
+    this._canvas.width = 16 * 24;
     this._canvas.height = 512;
   }
   ngOnChanges(changes: SimpleChanges) {
     if ("TileImages" in changes) {
-      this.setCanvasSize();
-      this.drawTiles();
+      if(this.TileImages != undefined){
+        this.setCanvasSize();
+        this.drawTiles();
+      }
+      
     }
   }
   private setCanvasSize(): void{

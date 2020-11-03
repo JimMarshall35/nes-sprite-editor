@@ -1,2 +1,38 @@
-<h2>{{"index : "+ SelectedIndex}}</h2>
-<canvas id="single-tile-display" (click)="OnClick($event)"></canvas>
+
+<div class="gridcol">
+	<div class="gridrow">
+		<div class="gridcell" (click)="OnCellClick(0, $event.target)"></div>
+		<div class="gridcell" (click)="OnCellClick(1, $event.target)"></div>
+		<div class="gridcell" (click)="OnCellClick(2, $event.target)"></div>
+	</div>
+	<div class="gridrow">
+		<div class="gridcell" (click)="OnCellClick(3, $event.target)"></div>
+		<div class="gridcell" (click)="OnCellClick(4, $event.target)"></div>
+		<div class="gridcell" (click)="OnCellClick(5, $event.target)"></div>
+	</div>
+	<div class="gridrow">
+		<div class="gridcell" (click)="OnCellClick(6, $event.target)"></div>
+		<div class="gridcell" (click)="OnCellClick(7, $event.target)"></div>
+		<div class="gridcell" (click)="OnCellClick(8, $event.target)"></div>
+	</div>
+</div>
+<h2>{{SelectedIndex}}</h2>
+<!-- <canvas id="single-tile-display" (click)="OnClick($event)"></canvas>
+ -->
+ <div class="gridcol">
+ 	<div class="gridrow">
+ 		<canvas class="single-canvas"id="single-tile-display" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 	</div>
+ 	<div class="gridrow">
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 	</div>
+ 	<div class="gridrow">
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 	</div>
+ </div>

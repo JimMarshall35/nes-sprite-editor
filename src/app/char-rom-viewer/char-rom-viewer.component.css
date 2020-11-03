@@ -3,20 +3,27 @@
   height: auto;
   max-height: 800px;
   min-height: 800px;
+  min-width: 384px;
   overflow-y: scroll;
   border: solid;
   display: inline-block;
   border-color: blue;
   text-align: center;
+  overflow-x: visible;
 }
 .outer {
   display: flex;
   text-align: center;
   width: 100%;
+  border:solid;
+  border-color: red;
 }
 .inner {
   width: auto;
   margin: auto auto;
+  overflow-x: visible;
+  border:solid;
+  border-color: black;
 }
 .info{
 
