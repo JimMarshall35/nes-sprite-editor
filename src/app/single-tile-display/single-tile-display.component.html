@@ -1,27 +1,45 @@
-
-<div class="gridcol">
-	<div class="gridrow">
-		<div class="gridcell" (click)="OnCellClick(0, $event.target)"></div>
-		<div class="gridcell" (click)="OnCellClick(1, $event.target)"></div>
-		<div class="gridcell" (click)="OnCellClick(2, $event.target)"></div>
+<div id="top-panel">
+	<div class="sub-panel-col">
+		<div class="gridcol" id="select-grid" #selectgrid>
+			<div class="gridrow">
+				<div class="gridcell" (click)="OnCellClick(0, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(1, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(2, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(3, $event.target)"></div>
+			</div>
+			<div class="gridrow">
+				<div class="gridcell" (click)="OnCellClick(4, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(5, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(6, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(7, $event.target)"></div>
+			</div>
+			<div class="gridrow">
+				<div class="gridcell" (click)="OnCellClick(8, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(9, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(10, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(11, $event.target)"></div>
+			</div>
+			<div class="gridrow">
+				<div class="gridcell" (click)="OnCellClick(12, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(13, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(14, $event.target)"></div>
+				<div class="gridcell" (click)="OnCellClick(15, $event.target)"></div>
+			</div>
+		</div>
+		<h2>{{SelectedIndex}}</h2>
 	</div>
-	<div class="gridrow">
-		<div class="gridcell" (click)="OnCellClick(3, $event.target)"></div>
-		<div class="gridcell" (click)="OnCellClick(4, $event.target)"></div>
-		<div class="gridcell" (click)="OnCellClick(5, $event.target)"></div>
+	<div class="sub-panel-col">
+		<app-colour-picker></app-colour-picker>
 	</div>
-	<div class="gridrow">
-		<div class="gridcell" (click)="OnCellClick(6, $event.target)"></div>
-		<div class="gridcell" (click)="OnCellClick(7, $event.target)"></div>
-		<div class="gridcell" (click)="OnCellClick(8, $event.target)"></div>
-	</div>
+	
 </div>
-<h2>{{SelectedIndex}}</h2>
+
 <!-- <canvas id="single-tile-display" (click)="OnClick($event)"></canvas>
  -->
- <div class="gridcol">
+ <div class="gridcol" id="canvas-grid" #canvasgrid>
  	<div class="gridrow">
- 		<canvas class="single-canvas"id="single-tile-display" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas"(click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
  		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
  		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
  	</div>
@@ -29,8 +47,16 @@
  		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
  		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
  		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
  	</div>
  	<div class="gridrow">
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 	</div>
+ 	<div class="gridrow">
+ 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
  		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
  		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
  		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>

@@ -12,11 +12,22 @@
 	width: 25px;
 	height: 25px;
 	border-style: solid;
-
 }
 canvas{
 	border: solid;
 	border-color: yellow;
 	height: auto;
 	display: block;
+}
+#top-panel{
+	display: flex;
+	flex-direction: row;
+}
+.sub-panel-col{
+	display: flex;
+	flex-direction: column;
+}
+.sub-panel-row{
+	display: flex;
+	flex-direction: row;
 }

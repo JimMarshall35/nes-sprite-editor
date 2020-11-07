@@ -1,0 +1,10 @@
+.panel-col{
+	display: flex;
+	flex-direction: column;
+	margin-left: 15px;
+	
+}
+.panel-row{
+	display: flex;
+	flex-direction: row;
+}

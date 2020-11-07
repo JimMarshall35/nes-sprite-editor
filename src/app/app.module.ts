@@ -8,13 +8,15 @@ import { FileService } from './file.service';
 import { ProcessrawchararrayService } from './processrawchararray.service';
 import { CharromdisplayComponent } from './charromdisplay/charromdisplay.component';
 import { SingleTileDisplayComponent } from './single-tile-display/single-tile-display.component';
+import { ColourPickerComponent } from './colour-picker/colour-picker.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharRomViewerComponent,
     CharromdisplayComponent,
-    SingleTileDisplayComponent
+    SingleTileDisplayComponent,
+    ColourPickerComponent
   ],
   imports: [
     BrowserModule,
