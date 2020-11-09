@@ -29,7 +29,7 @@
 		<h2>{{SelectedIndex}}</h2>
 	</div>
 	<div class="sub-panel-col">
-		<app-colour-picker></app-colour-picker>
+		<app-colour-picker (PaletteIndexChangeEvent)="OnPaletteIndexChange($event)" (ColourChangeEvent)="OnColourChanged($event)"></app-colour-picker>
 	</div>
 	
 </div>

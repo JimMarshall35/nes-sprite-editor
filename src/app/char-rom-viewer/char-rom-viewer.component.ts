@@ -66,5 +66,11 @@ export class CharRomViewerComponent implements OnInit {
       this._fileservice.downloadFile(this._LoadedTiles.ROM, this.LoadedTiles.MetaData.FileName.slice(0,-4) + "_edited.nes", "application/x-nes-rom");
     }
   }
+  OnColourChange(event){
+    for(let i=0; i<this._LoadedTiles.Sprites.length; i++){
+      this._LoadedTiles.Sprites[i].processPaletteIndicesToImgData();
+    }
+    this.makeChangesVisibileToChild();
+  }
 } 
 

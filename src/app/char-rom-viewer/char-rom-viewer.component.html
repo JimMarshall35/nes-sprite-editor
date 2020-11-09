@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="inner">
-    <app-single-tile-display [_SelectedTile]="SelectedTile" (PixelChangedEvent)="OnPixelChanged($event)"></app-single-tile-display>
+    <app-single-tile-display [_SelectedTile]="SelectedTile" (PixelChangedEvent)="OnPixelChanged($event)" (ColourChangedEvent)="OnColourChange($event)"></app-single-tile-display>
 
     
   </div>

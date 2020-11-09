@@ -16,12 +16,14 @@ export class SingleTileDisplayComponent implements AfterViewInit {
   SelectedIndex: string;
   @Input() _SelectedTile: SingleSprite;
   @Output() PixelChangedEvent = new EventEmitter<SingleSprite>();
+  @Output() ColourChangedEvent = new EventEmitter();
   private _canvases: HTMLCanvasElement[];
   private _scaledtilesize = 250;
   private _pixelsize;
   private _selectiongriddivs;
   private _currentcanvasindex = 0;
   private _tiles: wrappedSingleSprite[];
+  private _selectedIndex: number;
   @ViewChild("selectgrid") private _selectgrid: ElementRef;
   @ViewChild("canvasgrid") private _canvasgrid: ElementRef;
 
@@ -56,6 +58,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
     this.SelectedIndex = this.formatHex(0);
     this._pixelsize = this._scaledtilesize / 8;
     this._tiles = [];
+    this._selectedIndex = 0;
 
   }
   setGridDims(rows:number,cols:number){
@@ -114,10 +117,10 @@ export class SingleTileDisplayComponent implements AfterViewInit {
       let row = Math.floor(ypos / this._pixelsize);
       let col = Math.floor(xpos / this._pixelsize);
       let index = (row * 8) + col;
-      sprite.PaletteIndices[index]++;
-      if (sprite.PaletteIndices[index]>3) {
-        sprite.PaletteIndices[index] = 0;
-      }
+      sprite.PaletteIndices[index] = this._selectedIndex;
+      //if (sprite.PaletteIndices[index]>3) {
+      //  sprite.PaletteIndices[index] = 0;
+      //}
       sprite.processPaletteIndicesToBytes();
 
       this.drawTile(ctx, sprite);
@@ -165,5 +168,20 @@ export class SingleTileDisplayComponent implements AfterViewInit {
       }
     }
     this._tiles.push({index:canvasindex, sprite:ssprite});
+  }
+  OnColourChanged(event){
+     this.redrawAllTiles();
+     this.ColourChangedEvent.emit(event);
+  }
+  redrawAllTiles(){
+      for(let i=0; i<this._tiles.length; i++){
+        let tile = this._tiles[i];
+        let canvas = this._canvases[tile.index];
+        let ctx = canvas.getContext("2d");
+        this.drawTile(ctx, tile.sprite);
+      }
+  }
+  OnPaletteIndexChange(num){
+      this._selectedIndex = num;
   }
 }

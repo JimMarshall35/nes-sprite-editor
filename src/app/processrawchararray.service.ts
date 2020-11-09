@@ -113,7 +113,7 @@ export class SpritesData {
     }
   }
 }
-class Colour {
+export class Colour {
   constructor(public r: number,
               public g: number,
               public b: number,
