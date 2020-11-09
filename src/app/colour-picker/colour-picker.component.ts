@@ -1,4 +1,4 @@
-import { Output, Component, OnInit, ViewChild, ElementRef, AfterViewInit, EventEmitter } from '@angular/core';
+import { Output, Component, OnInit, EventEmitter } from '@angular/core';
 import { Colour, Palette} from '../processrawchararray.service';
 
 interface ColourChangeEvent{
@@ -9,7 +9,7 @@ interface ColourChangeEvent{
   templateUrl: './colour-picker.component.html',
   styleUrls: ['./colour-picker.component.css']
 })
-export class ColourPickerComponent implements OnInit, AfterViewInit {
+export class ColourPickerComponent implements OnInit {
 
   @Output() ColourChangeEvent = new EventEmitter<ColourChangeEvent>();
   @Output() PaletteIndexChangeEvent = new EventEmitter<number>();
@@ -17,9 +17,7 @@ export class ColourPickerComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
   }
-  ngAfterViewInit(): void{
 
-  }
   onPaletteRadioChange(num){
     this.PaletteIndexChangeEvent.emit(num);
   }
