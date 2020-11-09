@@ -2,9 +2,13 @@
 	display: flex;
 	flex-direction: column;
 	margin-left: 15px;
-	
+	align-items: center;
+}
+.panel-col-item{
+	margin-bottom: 15px;
 }
 .panel-row{
 	display: flex;
 	flex-direction: row;
+
 }

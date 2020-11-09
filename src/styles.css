@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+h3{
+	font-family: 'Press Start 2P', cursive;
+}
+p{
+	font-family: 'Press Start 2P', cursive;
+}
+button{
+	font-family: 'Press Start 2P', cursive;
+}
+label{
+	font-family: 'Press Start 2P', cursive;
+}
+h2{
+	font-family: 'Press Start 2P', cursive;
+}

@@ -15,7 +15,7 @@
 }
 canvas{
 	border: solid;
-	border-color: yellow;
+	border-color: grey;
 	height: auto;
 	display: block;
 }

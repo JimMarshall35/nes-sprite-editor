@@ -18,7 +18,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
   @Output() PixelChangedEvent = new EventEmitter<SingleSprite>();
   @Output() ColourChangedEvent = new EventEmitter();
   private _canvases: HTMLCanvasElement[];
-  private _scaledtilesize = 250;
+  private _scaledtilesize = 150;
   private _pixelsize;
   private _selectiongriddivs;
   private _currentcanvasindex = 0;
@@ -118,9 +118,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
       let col = Math.floor(xpos / this._pixelsize);
       let index = (row * 8) + col;
       sprite.PaletteIndices[index] = this._selectedIndex;
-      //if (sprite.PaletteIndices[index]>3) {
-      //  sprite.PaletteIndices[index] = 0;
-      //}
+
       sprite.processPaletteIndicesToBytes();
 
       this.drawTile(ctx, sprite);
