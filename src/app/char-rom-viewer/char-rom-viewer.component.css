@@ -6,7 +6,7 @@
   min-width: 384px;
   overflow-y: scroll;
   display: inline-block;
- 
+  align-items: right;
   overflow-x: visible;
 }
 .outer {

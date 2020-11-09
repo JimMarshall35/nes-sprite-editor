@@ -7,7 +7,7 @@
       <input type="file" (change)="onFilesDropped($event)" />
       <button (click)="OnDownloadButtonClick()">download rom</button>
     </div>
-    <div class="dropzone" (drop)="onFilesDropped($event)">
+    <div class="dropzone" (drop)="onFilesDropped($event)" >
       <app-charromdisplay [TileImages]="LoadedTiles" (TileSelectChangeEvent)="OnTileSelectionChange($event)"></app-charromdisplay>
     </div>
   </div>
