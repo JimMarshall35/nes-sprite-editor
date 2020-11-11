@@ -22,7 +22,7 @@ export class CharromdisplayComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this._canvas = <HTMLCanvasElement>document.getElementById("canvas");
     this._ctx = this._canvas.getContext("2d");
-    this._canvas.width = 16 * 24;
+    this._canvas.width = 16 * this._scaledtilesize;
     this._canvas.height = 512;
   }
   ngOnChanges(changes: SimpleChanges) {
