@@ -231,7 +231,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
         case "a":
           this._currentcanvasindex--;
           if(this._currentcanvasindex < 0){
-            this._currentcanvasindex = (this.GRID_COLS*this.GRID_ROWS -1)-(this.GRID_COLS-this._currentcanvasindex);
+            this._currentcanvasindex = (this.GRID_COLS*this.GRID_ROWS -1);
           }
           this.OnCellClick(this._currentcanvasindex,this._selectiongriddivs[this._currentcanvasindex]);
           break;
@@ -239,7 +239,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
         case "d":
           this._currentcanvasindex++;
           if(this._currentcanvasindex >this.GRID_COLS*this.GRID_ROWS -1){
-            this._currentcanvasindex = (this.GRID_ROWS)-(this.GRID_COLS-this._currentcanvasindex);
+            this._currentcanvasindex = 0;
           }
           this.OnCellClick(this._currentcanvasindex,this._selectiongriddivs[this._currentcanvasindex]);
           break;
