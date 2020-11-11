@@ -7,7 +7,7 @@ import { SpritesData, ROMMetaData, SingleSprite} from '../processrawchararray.se
   styleUrls: ['./charromdisplay.component.css']
 })
 export class CharromdisplayComponent implements AfterViewInit {
-  private _scaledtilesize = 24;
+  private _scaledtilesize = 32;
   private _ctx;
   private _canvas: HTMLCanvasElement;
   @Input() TileImages: SpritesData;
@@ -56,8 +56,9 @@ export class CharromdisplayComponent implements AfterViewInit {
   }
   OnClick(e) {
     if (this.TileImages != undefined) {
-      let xpos = e.layerX; 
-      let ypos = e.layerY; 
+      let pos = this.getMousePos(this._canvas,e);
+      let xpos = pos.x; 
+      let ypos = pos.y; 
       let row = Math.floor(ypos / this._scaledtilesize);
       let col = Math.floor(xpos / this._scaledtilesize);
       let index = (row * 16) + col;
@@ -67,5 +68,12 @@ export class CharromdisplayComponent implements AfterViewInit {
         console.log(this.ChosenTile.Index);
       }
     }
+  }
+  getMousePos(canvas, evt) {
+      var rect = canvas.getBoundingClientRect();
+      return {
+          x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+          y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+      };
   }
 }

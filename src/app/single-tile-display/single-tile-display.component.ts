@@ -1,5 +1,5 @@
 
-import { Component, ElementRef, OnInit,AfterViewInit, ViewChild, Input, Output, EventEmitter, SimpleChanges} from '@angular/core';
+import { HostListener, Component, ElementRef, OnInit,AfterViewInit, ViewChild, Input, Output, EventEmitter, SimpleChanges} from '@angular/core';
 import { SingleSprite, Palette } from '../processrawchararray.service';
 import { Event } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -24,6 +24,8 @@ export class SingleTileDisplayComponent implements AfterViewInit {
   private _currentcanvasindex = 0;
   private _tiles: wrappedSingleSprite[];
   private _selectedIndex: number;
+  private GRID_COLS = 4;
+  private GRID_ROWS = 4;
   @ViewChild("selectgrid") private _selectgrid: ElementRef;
   @ViewChild("canvasgrid") private _canvasgrid: ElementRef;
 
@@ -49,10 +51,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
     return str_start + numstr;
   }
   ngAfterViewInit(): void {
-    //this._selectgrid = document.getElementById("select-grid");
-    //this._canvasgrid = document.getElementById("canvas-grid");
     this._selectiongriddivs = document.getElementsByClassName("gridcell");
-    //this.setGridDims(4,4);
     this.initCanvases();
     
     this.SelectedIndex = this.formatHex(0);
@@ -112,8 +111,9 @@ export class SingleTileDisplayComponent implements AfterViewInit {
     let ctx = <HTMLCanvasElement>sender.getContext("2d");
     let sprite = this.getSpriteByIndex(c_index);
     if(sprite != null){
-      let xpos = e.layerX;
-      let ypos = e.layerY;
+      let pos = this.getMousePos(sender,e);
+      let xpos = pos.x;
+      let ypos = pos.y;
       let row = Math.floor(ypos / this._pixelsize);
       let col = Math.floor(xpos / this._pixelsize);
       let index = (row * 8) + col;
@@ -127,10 +127,13 @@ export class SingleTileDisplayComponent implements AfterViewInit {
     }
     
   }
-  OnCellClick(num: number, element): void{ 
+  SetSelectionGridWhite(){
     for (var i = 0; i < this._selectiongriddivs.length; ++i) {
         this._selectiongriddivs[i].style.backgroundColor = "white";
     }
+  }
+  OnCellClick(num: number, element): void{ 
+    this.SetSelectionGridWhite();
     element.style.backgroundColor = "red";
     this._currentcanvasindex = num;
   }
@@ -181,5 +184,58 @@ export class SingleTileDisplayComponent implements AfterViewInit {
   }
   OnPaletteIndexChange(num){
       this._selectedIndex = num;
+  }
+  getMousePos(canvas, evt) {
+      var rect = canvas.getBoundingClientRect();
+      return {
+          x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+          y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+      };
+  }
+  @HostListener('window:keypress', ['$event'])
+  public handleKeyPress(event){
+    /*
+      function needs tidying up / refactoring
+    */
+    switch(event.key){
+        case "ArrowUp":
+        case "w":
+          
+          if(this._currentcanvasindex- this.GRID_COLS < 0){
+            this._currentcanvasindex = (this.GRID_COLS*this.GRID_ROWS -1)-(this.GRID_COLS-this._currentcanvasindex-1);
+            this.OnCellClick(this._currentcanvasindex,this._selectiongriddivs[this._currentcanvasindex]);
+            break;
+          }
+          this._currentcanvasindex -= this.GRID_COLS;
+          this.OnCellClick(this._currentcanvasindex,this._selectiongriddivs[this._currentcanvasindex]);
+          break;
+        case "ArrowDown":
+        case "s":
+          
+          if(this._currentcanvasindex + this.GRID_COLS > this.GRID_COLS*this.GRID_ROWS -1){
+            this._currentcanvasindex = (this.GRID_ROWS)-(this.GRID_COLS*this.GRID_ROWS-this._currentcanvasindex);
+            this.OnCellClick(this._currentcanvasindex,this._selectiongriddivs[this._currentcanvasindex]);
+            break;
+          }
+          this._currentcanvasindex += this.GRID_COLS;
+          this.OnCellClick(this._currentcanvasindex,this._selectiongriddivs[this._currentcanvasindex]);
+          break;
+        case "ArrowLeft":
+        case "a":
+          this._currentcanvasindex--;
+          if(this._currentcanvasindex < 0){
+            this._currentcanvasindex = (this.GRID_COLS*this.GRID_ROWS -1)-(this.GRID_COLS-this._currentcanvasindex);
+          }
+          this.OnCellClick(this._currentcanvasindex,this._selectiongriddivs[this._currentcanvasindex]);
+          break;
+        case "ArrowRight":
+        case "d":
+          this._currentcanvasindex++;
+          if(this._currentcanvasindex >this.GRID_COLS*this.GRID_ROWS -1){
+            this._currentcanvasindex = (this.GRID_ROWS)-(this.GRID_COLS-this._currentcanvasindex);
+          }
+          this.OnCellClick(this._currentcanvasindex,this._selectiongriddivs[this._currentcanvasindex]);
+          break;
+    }
   }
 }
