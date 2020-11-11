@@ -40,7 +40,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
       }
     }
   }
-  formatHex(num: number): string{
+  private formatHex(num: number): string{
     let str_start = "0x";
     let numstr = num.toString(16);
     if (numstr.length <= 4) {
@@ -60,7 +60,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
     this._selectedIndex = 0;
 
   }
-  setGridDims(rows:number,cols:number){
+  private setGridDims(rows:number,cols:number){
     this._selectgrid.nativeElement.innerHTML = "";
     this._canvasgrid.nativeElement.innerHTML = "";
     let newselect = "";
@@ -79,7 +79,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
     this._canvasgrid.nativeElement.innerHTML = newcanvas;
     this._selectiongriddivs = document.getElementsByClassName("gridcell");
   }
-  initCanvases(): void{
+  private initCanvases(): void{
     this._canvases = [];
     let canvases_result = document.getElementsByClassName("single-canvas");
     for(let i=0; i<canvases_result.length; i++){
@@ -91,7 +91,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
       canvas.height = this._scaledtilesize;
     }
   }
-  drawTile(ctx, sprite: SingleSprite): void {
+  private drawTile(ctx, sprite: SingleSprite): void {
     ctx.clearRect(0, 0, this._scaledtilesize, this._scaledtilesize);
     let cursor = { x: 0, y: 0 };
     for (let i = 0; i < sprite.PaletteIndices.length; i++) {
@@ -127,7 +127,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
     }
     
   }
-  SetSelectionGridWhite(){
+  private SetSelectionGridWhite(){
     for (var i = 0; i < this._selectiongriddivs.length; ++i) {
         this._selectiongriddivs[i].style.backgroundColor = "white";
     }
@@ -136,8 +136,15 @@ export class SingleTileDisplayComponent implements AfterViewInit {
     this.SetSelectionGridWhite();
     element.style.backgroundColor = "red";
     this._currentcanvasindex = num;
+    this.setCanvasBorderRed(num);
   }
-  getSpriteByIndex(index:number): SingleSprite{
+  private setCanvasBorderRed(index){
+    for(let i=0; i<this._canvases.length; i++){
+      this._canvases[i].style.borderColor = "grey";
+    }
+    this._canvases[index].style.borderColor = "red";
+  }
+  private getSpriteByIndex(index:number): SingleSprite{
     for(let i=0; i<this._tiles.length; i++){
       if(this._tiles[i].index == index){
         return this._tiles[i].sprite;
@@ -145,7 +152,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
     }
     return null;
   }
-  getIndexOfCanvas(c: HTMLCanvasElement): number{
+  private getIndexOfCanvas(c: HTMLCanvasElement): number{
     /*
       get the index of a canvas in this._canvases 
       from a reference to that canvas (eg from click event)
@@ -157,7 +164,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
       }
       return null;
   }
-  pushToTiles(ssprite: SingleSprite, canvasindex: number): void{
+  private pushToTiles(ssprite: SingleSprite, canvasindex: number): void{
     /* 
       ensures there are never two objects in
       this._tiles with the same canvas index
@@ -174,7 +181,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
      this.redrawAllTiles();
      this.ColourChangedEvent.emit(event);
   }
-  redrawAllTiles(){
+  private redrawAllTiles(){
       for(let i=0; i<this._tiles.length; i++){
         let tile = this._tiles[i];
         let canvas = this._canvases[tile.index];
@@ -185,7 +192,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
   OnPaletteIndexChange(num){
       this._selectedIndex = num;
   }
-  getMousePos(canvas, evt) {
+  private getMousePos(canvas, evt) {
       var rect = canvas.getBoundingClientRect();
       return {
           x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
