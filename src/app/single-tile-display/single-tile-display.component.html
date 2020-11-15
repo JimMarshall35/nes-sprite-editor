@@ -34,31 +34,31 @@
 	
 </div>
 
-<!-- <canvas id="single-tile-display" (click)="OnClick($event)"></canvas>
+<!-- <canvas id="single-tile-display" (click)="OnMouseDown($event)"></canvas>
  -->
  <div class="gridcol" id="canvas-grid" #canvasgrid>
  	<div class="gridrow">
- 		<canvas style="border-color: red" class="single-canvas"(click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas style="border-color: red" class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
  	</div>
  	<div class="gridrow">
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
  	</div>
  	<div class="gridrow">
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
  	</div>
  	<div class="gridrow">
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
- 		<canvas class="single-canvas" (click)="OnClick($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
+ 		<canvas class="single-canvas" (mousemove)="OnMouseMove($event, $event.target)" (mousedown)="OnMouseDown($event, $event.target)"></canvas>
  	</div>
  </div>

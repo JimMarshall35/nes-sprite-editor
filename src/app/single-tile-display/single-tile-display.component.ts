@@ -26,6 +26,7 @@ export class SingleTileDisplayComponent implements AfterViewInit {
   private _selectedIndex: number;
   private GRID_COLS = 4;
   private GRID_ROWS = 4;
+  private _shoulddraw = false;
   @ViewChild("selectgrid") private _selectgrid: ElementRef;
   @ViewChild("canvasgrid") private _canvasgrid: ElementRef;
 
@@ -106,7 +107,16 @@ export class SingleTileDisplayComponent implements AfterViewInit {
       }
     }
   }
-  OnClick(e, sender): void {
+  OnMouseDown(e, sender): void {
+    this._shoulddraw = true;
+    this.DrawPxl(e,sender);
+  }
+  OnMouseMove(e,sender): void{
+    if(this._shoulddraw){
+      this.DrawPxl(e,sender);
+    }
+  }
+  private DrawPxl(e,sender){
     let c_index = this.getIndexOfCanvas(sender);
     let ctx = <HTMLCanvasElement>sender.getContext("2d");
     let sprite = this.getSpriteByIndex(c_index);
@@ -125,7 +135,6 @@ export class SingleTileDisplayComponent implements AfterViewInit {
       sprite.processPaletteIndicesToImgData();
       this.PixelChangedEvent.emit(sprite);
     }
-    
   }
   private SetSelectionGridWhite(){
     for (var i = 0; i < this._selectiongriddivs.length; ++i) {
@@ -198,6 +207,10 @@ export class SingleTileDisplayComponent implements AfterViewInit {
           x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
           y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
       };
+  }
+  @HostListener('window:mouseup', ['$event'])
+  public OnMouseUp(event){
+    this._shoulddraw = false;
   }
   @HostListener('window:keypress', ['$event'])
   public handleKeyPress(event){
