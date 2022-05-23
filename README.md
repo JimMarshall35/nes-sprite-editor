@@ -1,8 +1,6 @@
 This browser based tool lets you upload an NES rom, extract and edit the char rom and repack it back into the rom to be redownloaded.
 When you play this edited rom, the graphics will now be changed! 
 
-This is all done client side.
-
 Also allows editing of .chr chr rom files in isolation to the rest of the game rom. 
 
 works well on google chrome - your mileage may vary on other browsers
